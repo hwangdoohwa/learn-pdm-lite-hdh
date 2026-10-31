@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>노이즈 vs 추세</title>
+<style>
+:root { --bg:#fff; --fg:#1f2328; --mute:#656d76; --line:#d0d7de; --c1:#2f6fb3; --c2:#d9822b; --c3:#c0392b; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0d1117; --fg:#e6edf3; --mute:#9198a1; --line:#30363d; --c1:#6ea8fe; --c2:#f0a050; --c3:#ff7b72; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui, "Malgun Gothic", sans-serif; }
+main { max-width:860px; margin:0 auto; padding:24px 16px; }
+h1 { font-size:1.4rem; margin:0 0 4px; }
+.sum { margin:0 0 16px; }
+.sum b { color:var(--c3); }
+svg { width:100%; height:auto; display:block; }
+.grid { stroke:var(--line); }
+.ax { fill:var(--mute); font-size:12px; }
+.lb { font-size:12px; font-weight:600; }
+.key { display:flex; flex-wrap:wrap; gap:4px 16px; margin:8px 0 0; padding:0; list-style:none; font-size:.9rem; }
+.key i { display:inline-block; width:16px; height:3px; vertical-align:middle; margin-right:6px; }
+footer { margin-top:20px; color:var(--mute); font-size:.85rem; }
+a { color:var(--c1); }
+</style></head>
+<body><main>
+<h1>노이즈 vs 추세 — 설비A·B 센서</h1>
+<p class="sum">설비B 온도가 <b>13:00</b>부터, 설비B 진동이 <b>15:00</b>부터 기준선 상한을 연속으로 넘으며 오른다(추세 → 정비 신호).
+설비A 진동은 12:40 한 번 3.5 mm/s로 튀고 돌아왔다(노이즈).</p>
+<svg viewBox="0 0 720 380" role="img" aria-label="설비A·B 진동과 설비B 온도 선 그래프">
+<line x1="48" x2="668" y1="340.0" y2="340.0" class="grid"/>
+<text x="42" y="344.0" text-anchor="end" class="ax">0</text>
+<text x="674" y="344.0" class="ax">50</text>
+<line x1="48" x2="668" y1="260.0" y2="260.0" class="grid"/>
+<text x="42" y="264.0" text-anchor="end" class="ax">1</text>
+<text x="674" y="264.0" class="ax">54</text>
+<line x1="48" x2="668" y1="180.0" y2="180.0" class="grid"/>
+<text x="42" y="184.0" text-anchor="end" class="ax">2</text>
+<text x="674" y="184.0" class="ax">58</text>
+<line x1="48" x2="668" y1="100.0" y2="100.0" class="grid"/>
+<text x="42" y="104.0" text-anchor="end" class="ax">3</text>
+<text x="674" y="104.0" class="ax">62</text>
+<line x1="48" x2="668" y1="20.0" y2="20.0" class="grid"/>
+<text x="42" y="24.0" text-anchor="end" class="ax">4</text>
+<text x="674" y="24.0" class="ax">66</text>
+<text x="48.0" y="358" text-anchor="middle" class="ax">08시</text>
+<text x="125.5" y="358" text-anchor="middle" class="ax">09시</text>
+<text x="203.0" y="358" text-anchor="middle" class="ax">10시</text>
+<text x="280.5" y="358" text-anchor="middle" class="ax">11시</text>
+<text x="358.0" y="358" text-anchor="middle" class="ax">12시</text>
+<text x="435.5" y="358" text-anchor="middle" class="ax">13시</text>
+<text x="513.0" y="358" text-anchor="middle" class="ax">14시</text>
+<text x="590.5" y="358" text-anchor="middle" class="ax">15시</text>
+<text x="668.0" y="358" text-anchor="middle" class="ax">16시</text>
+<text x="42" y="14" text-anchor="end" class="ax">mm/s</text>
+<text x="674" y="14" class="ax">℃</text>
+<line x1="435.5" x2="435.5" y1="20" y2="340" stroke="var(--c3)" stroke-width="1.5" stroke-dasharray="2 3"/>
+<text x="431.5" y="32" text-anchor="end" class="lb" fill="var(--c3)">B 온도 추세 시작 13:00</text>
+<line x1="590.5" x2="590.5" y1="20" y2="340" stroke="var(--c2)" stroke-width="1.5" stroke-dasharray="2 3"/>
+<text x="586.5" y="32" text-anchor="end" class="lb" fill="var(--c2)">B 진동 추세 시작 15:00</text>
+<polyline points="48.0,249.2 668.0,249.2" fill="none" stroke="var(--c1)" stroke-width="2" stroke-dasharray="6 4"/>
+<polyline points="48.0,250.7 668.0,250.7" fill="none" stroke="var(--c2)" stroke-width="2" stroke-dasharray="6 4"/>
+<polyline points="48.0,200.0 668.0,200.0" fill="none" stroke="var(--c3)" stroke-width="2" stroke-dasharray="6 4"/>
+<polyline points="48.0,260.8 73.8,256.0 99.7,266.4 125.5,265.6 151.3,256.0 177.2,260.0 203.0,265.6 228.8,263.2 254.7,265.6 280.5,263.2 306.3,255.2 332.2,260.0 358.0,252.0 383.8,268.0 409.7,60.0 435.5,260.0 461.3,256.8 487.2,264.8 513.0,255.2 538.8,255.2 564.7,258.4 590.5,257.6 616.3,260.8 642.2,265.6 668.0,257.6" fill="none" stroke="var(--c1)" stroke-width="2"/>
+<polyline points="48.0,264.8 73.8,256.0 99.7,257.6 125.5,257.6 151.3,256.0 177.2,260.0 203.0,256.0 228.8,259.2 254.7,259.2 280.5,263.2 306.3,258.4 332.2,259.2 358.0,256.8 383.8,256.8 409.7,255.2 435.5,256.0 461.3,253.6 487.2,252.0 513.0,250.4 538.8,252.8 564.7,260.0 590.5,236.0 616.3,204.0 642.2,164.0 668.0,108.0" fill="none" stroke="var(--c2)" stroke-width="2"/>
+<polyline points="48.0,228.0 73.8,248.0 99.7,230.0 125.5,224.0 151.3,224.0 177.2,234.0 203.0,226.0 228.8,244.0 254.7,258.0 280.5,226.0 306.3,232.0 332.2,224.0 358.0,254.0 383.8,232.0 409.7,206.0 435.5,176.0 461.3,184.0 487.2,154.0 513.0,122.0 538.8,126.0 564.7,112.0 590.5,74.0 616.3,74.0 642.2,60.0 668.0,38.0" fill="none" stroke="var(--c3)" stroke-width="2"/>
+<circle cx="409.7" cy="60.0" r="6" fill="none" stroke="var(--c1)" stroke-width="2"/>
+<text x="419.7" y="64.0" class="lb" fill="var(--c1)">A 노이즈 12:40 · 3.5</text>
+</svg>
+<ul class="key">
+<li><i style="background:var(--c1)"></i>설비A 진동 (왼쪽 축)</li>
+<li><i style="background:var(--c2)"></i>설비B 진동 (왼쪽 축)</li>
+<li><i style="background:var(--c3)"></i>설비B 온도 (오른쪽 축)</li>
+<li>점선 = 기준선 상한 (처음 12점 평균 + 3σ · A 진동 1.14 · B 진동 1.12 · B 온도 57.0℃)</li>
+</ul>
+<footer>센서 값은 <b>실습용 가상 데이터</b>다 (2026-09-15 08:00~16:00, 20분 간격).
+원본 강의: <a href="https://github.com/keerhee/kma-auto-genai-3-1">keerhee/kma-auto-genai-3-1</a> · Day5 예지보전 ④ 분석 1</footer>
+</main></body></html>

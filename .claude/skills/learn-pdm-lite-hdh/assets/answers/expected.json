@@ -1,0 +1,44 @@
+{
+ "values": {
+  "a_vib_kind": {
+   "value": "노이즈",
+   "decimals": null,
+   "block": 1
+  },
+  "a_noise_time": {
+   "value": "12:40",
+   "decimals": null,
+   "block": 1
+  },
+  "a_noise_value": {
+   "value": 3.5,
+   "decimals": 1,
+   "block": 1
+  },
+  "b_temp_trend_start": {
+   "value": "13:00",
+   "decimals": null,
+   "block": 1
+  },
+  "b_temp_upper": {
+   "value": 57.0,
+   "decimals": 1,
+   "block": 1
+  },
+  "b_temp_over_points": {
+   "value": 10,
+   "decimals": 0,
+   "block": 1
+  },
+  "b_vib_trend_start": {
+   "value": "15:00",
+   "decimals": null,
+   "block": 1
+  },
+  "b_vib_upper": {
+   "value": 1.12,
+   "decimals": 2,
+   "block": 1
+  }
+ }
+}
